@@ -26,8 +26,7 @@ class MemeMeTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: actions
     @IBAction func createNewMemeMe (_ sender: UIBarButtonItem) {
-        let memeMeVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeMeViewController") as! MemeMeViewController
-        memeMeVC.isCancel = true
+        performSegue(withIdentifier: self.addNewMemeMeSegueIdentifier, sender: nil)
     }
     
     //MARK: tableview datasource and delegates

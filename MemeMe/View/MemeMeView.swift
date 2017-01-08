@@ -15,4 +15,20 @@ class MemeMeView: UIView {
     @IBOutlet weak var memeImage: UIImageView!
     @IBOutlet weak var memeDescriptionTopText: UITextField!
     @IBOutlet weak var memeDescriptionBotText: UITextField!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let memeTextAttributes:[String:Any] = [
+            NSStrokeColorAttributeName: UIColor.black,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "Impact", size: 35)!,
+            NSStrokeWidthAttributeName: -1.0]
+        
+        memeDescriptionTopText.defaultTextAttributes = memeTextAttributes
+        memeDescriptionBotText.defaultTextAttributes = memeTextAttributes
+        
+        memeDescriptionTopText.textAlignment = .center
+        memeDescriptionBotText.textAlignment = .center
+    }
 }
