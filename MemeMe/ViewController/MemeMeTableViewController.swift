@@ -29,6 +29,13 @@ class MemeMeTableViewController: UIViewController, UITableViewDelegate, UITableV
         performSegue(withIdentifier: self.addNewMemeMeSegueIdentifier, sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == addNewMemeMeSegueIdentifier {
+            let memeMeVC = segue.destination as! MemeMeViewController
+            memeMeVC.isCancel = true
+        }
+    }
+    
     //MARK: tableview datasource and delegates
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.memes.count

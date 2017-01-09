@@ -11,16 +11,14 @@ import UIKit
 private typealias SaveResult = () -> ()
 
 class MemeMeViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    @IBOutlet weak var shareButton: UIBarButtonItem!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     var isCancel: Bool = false
+    var isEditMemeMe: Bool = false
+    var meme: Meme?
     
     //MARK: private properties
     private enum SourceType: Int { case Camera = 0, Album }
     private let memeSegueIdentifier: String = "sentMemesSegue"
-    private var meme: Meme?
     private var mainView: MemeMeView {
         return self.view as! MemeMeView
     }
@@ -29,8 +27,10 @@ class MemeMeViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        shareButton.isEnabled = false
-        cancelButton.isEnabled = isCancel
+        mainView.shareButton.isEnabled = false
+        mainView.cancelButton.isEnabled = isCancel
+        
+        if isEditMemeMe { changeMemeMe() }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +44,10 @@ class MemeMeViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     //MARK: actions
@@ -100,7 +104,7 @@ class MemeMeViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             mainView.memeImage.image = image
-            shareButton.isEnabled = true
+            mainView.shareButton.isEnabled = true
         }
         
         dismiss(animated: true, completion: nil)
@@ -184,7 +188,16 @@ class MemeMeViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     private func navigationAndToolbarNonAvailable (_ isAvailable: Bool) {
         mainView.memeTolbarControl.isHidden = isAvailable
-        navigationController?.setNavigationBarHidden(isAvailable, animated: false)
+        mainView.memeNavigationBar.isHidden = isAvailable
+    }
+    
+    private func changeMemeMe () {
+        
+        guard let meme = meme else { return }
+        
+        mainView.memeDescriptionTopText.text = meme.topDescription
+        mainView.memeDescriptionBotText.text = meme.bottomDescription
+        mainView.memeImage.image = meme.originalImage
     }
 }
 

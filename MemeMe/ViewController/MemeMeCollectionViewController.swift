@@ -30,6 +30,13 @@ class MemeMeCollectionViewController: UICollectionViewController {
         performSegue(withIdentifier: self.addNewMemeMeSegueIdentifier, sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == addNewMemeMeSegueIdentifier {
+            let memeMeVC = segue.destination as! MemeMeViewController
+            memeMeVC.isCancel = true
+        }
+    }
+    
     //MARK: private methods
     private func populateSentMemes () {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

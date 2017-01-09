@@ -10,6 +10,9 @@ import UIKit
 
 class MemeMeView: UIView {
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var memeNavigationBar: UINavigationBar!
     @IBOutlet weak var memeTolbarControl: UIToolbar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var memeImage: UIImageView!
