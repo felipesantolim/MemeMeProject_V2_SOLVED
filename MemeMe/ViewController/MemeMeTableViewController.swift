@@ -11,6 +11,7 @@ import UIKit
 class MemeMeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: properties
+    @IBOutlet weak var mainTableView: UITableView!
     private var memes: [Meme] = [Meme]()
     private let cellIdentifier: String = "MemeMeTableCell"
     private let storyboardIdentifierDetail: String = "MemeMeDetailViewController"
@@ -19,9 +20,11 @@ class MemeMeTableViewController: UIViewController, UITableViewDelegate, UITableV
     //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.memes = appDelegate.memes
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        populateSentMemes()
     }
     
     //MARK: actions
@@ -34,6 +37,15 @@ class MemeMeTableViewController: UIViewController, UITableViewDelegate, UITableV
             let memeMeVC = segue.destination as! MemeMeViewController
             memeMeVC.isCancel = true
         }
+    }
+    
+    //MARK: private methods
+    private func populateSentMemes () {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.memes = appDelegate.memes
+        
+        mainTableView.reloadData()
     }
     
     //MARK: tableview datasource and delegates

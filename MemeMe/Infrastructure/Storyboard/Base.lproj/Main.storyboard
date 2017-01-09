@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PxI-R9-2Cw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q7F-ZV-Cjy">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -137,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LzL-zv-3db" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1058" y="35"/>
+            <point key="canvasLocation" x="4344" y="-758"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="o6z-Vu-8vD">
@@ -192,6 +192,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="TFc-L7-KJe" id="MX1-WM-Htg"/>
+                        <outlet property="mainCollectionView" destination="Oga-tB-LNi" id="LIv-Zl-7im"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uve-Y7-V5l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9B-Ew-UDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4266" y="35"/>
+            <point key="canvasLocation" x="4344" y="35"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="AqV-xS-jZ2">
@@ -328,6 +329,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mainTableView" destination="PhK-gn-3GG" id="rm9-ch-QHt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPi-aR-a0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -412,6 +416,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Psa-Tg-hxD"/>
+        <segue reference="NOQ-da-NDA"/>
     </inferredMetricsTieBreakers>
 </document>

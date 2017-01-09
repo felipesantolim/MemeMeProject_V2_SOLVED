@@ -18,7 +18,6 @@ class MemeMeViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     //MARK: private properties
     private enum SourceType: Int { case Camera = 0, Album }
-    private let memeSegueIdentifier: String = "sentMemesSegue"
     private var mainView: MemeMeView {
         return self.view as! MemeMeView
     }
@@ -89,7 +88,7 @@ class MemeMeViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                     guard let me = self.meme else { return }
                     
                     (UIApplication.shared.delegate as! AppDelegate).memes.append(me)
-                    self.performSegue(withIdentifier: self.memeSegueIdentifier, sender: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         }
@@ -192,6 +191,8 @@ class MemeMeViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     private func changeMemeMe () {
+        
+        mainView.shareButton.isEnabled = true
         
         guard let meme = meme else { return }
         

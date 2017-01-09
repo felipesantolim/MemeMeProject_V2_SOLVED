@@ -12,6 +12,7 @@ class MemeMeCollectionViewController: UICollectionViewController {
     
     //MARK: properties
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet var mainCollectionView: UICollectionView!
     private var memes: [Meme] = [Meme]()
     private var cellIdentifier: String = "MemeMeCollectionCell"
     private let storyboardIdentifierDetail: String = "MemeMeDetailViewController"
@@ -20,9 +21,12 @@ class MemeMeCollectionViewController: UICollectionViewController {
     //MARL: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        populateSentMemes()
         adjustsCollectionViewFlowLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        populateSentMemes()
     }
     
     //MARK: actions
@@ -39,8 +43,11 @@ class MemeMeCollectionViewController: UICollectionViewController {
     
     //MARK: private methods
     private func populateSentMemes () {
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.memes = appDelegate.memes
+        
+        mainCollectionView.reloadData()
     }
     
     private func adjustsCollectionViewFlowLayout () {
